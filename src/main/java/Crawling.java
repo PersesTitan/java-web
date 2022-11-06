@@ -29,6 +29,7 @@ public class Crawling {
                 br.lines()
                         .map(String::strip)
                         .filter(v -> v.startsWith("<a class=\"Link--muted mr-3\" href=\""))
+                        .map(v -> v.substring("<a class=\"Link--muted mr-3\" href=\"".length(), v.length()-"/stargazers/>".length()))
                         .forEach(s::add);
             } catch (IOException ignored) {break;}
             if (s.isEmpty()) break;
